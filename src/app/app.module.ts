@@ -14,6 +14,8 @@ import { MobileDirective } from './dynamic-component/Mobile.directive';
 import { DynamicComponentModule } from './dynamic-component/dynamic-component.module';
 import { MobileService } from './dynamic-component/mobile.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SubscriberComponent } from './subscriber/subscriber.component';
+import { Subscriber2Component } from './subscriber2/subscriber2.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
         AppComponent,
         BikeListComponent,
         BikeChildComponent,
-        MobileDirective
+        MobileDirective,
+        SubscriberComponent,
+        Subscriber2Component
     ],
     providers: [MobileService],
     bootstrap: [AppComponent],

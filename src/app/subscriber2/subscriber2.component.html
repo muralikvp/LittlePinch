@@ -1,0 +1,54 @@
+<hr/>
+<hr/>
+
+<p>subscriber2 works!</p>
+
+
+<p>subscriber works!</p>
+{{name}}
+
+<div class="row" *ngIf="users">
+    <div class="col-6 col-md-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                   Id
+                </div>
+                <div class="col-sm">
+                    Name
+                </div>
+                <div class="col-sm">
+                   User Name
+                </div>
+                <div class="col-sm">
+                   Website
+                </div>
+               
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row" *ngFor="let u of users">
+    <div class="col-6 col-md-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    {{ u.id}}
+                </div>
+                <div class="col-sm">
+                    {{ u?.name}}
+                </div>
+                <div class="col-sm">
+                    {{ u?.username}}
+                </div>
+                <div class="col-sm">
+                    {{ u?.website}}
+                </div>
+               
+            </div>
+        </div>
+
+    </div>
+</div>
