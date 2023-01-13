@@ -1,0 +1,10 @@
+<p>home works!</p>
+
+<!-- <app-sub-home *ngIf="ShowSub" [count]="count"></app-sub-home> -->
+<input type="text" #tmplRef />
+<button (click)="getInput(tmplRef)">Click Me</button>
+<app-sub-home  [count]="count"></app-sub-home>
+
+<button (click)="ToggleShowSub()" >Toggle</button>
+
+<button (click)="incrementCount()" >Increment Count</button>

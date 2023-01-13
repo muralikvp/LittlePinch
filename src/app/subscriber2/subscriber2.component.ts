@@ -18,7 +18,7 @@ export class Subscriber2Component {
         this.users = u;
         console.log(u);
       }); 
-      this.name = this.uservice.specialName;
 
+      this.name = this.uservice.specialName;
 }
 }

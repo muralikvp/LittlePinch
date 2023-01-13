@@ -13,9 +13,15 @@ import { ContentProjectionModule } from "./content-projection/content-projection
 import { MobileDirective } from './dynamic-component/Mobile.directive';
 import { DynamicComponentModule } from './dynamic-component/dynamic-component.module';
 import { MobileService } from './dynamic-component/mobile.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SubscriberComponent } from './subscriber/subscriber.component';
 import { Subscriber2Component } from './subscriber2/subscriber2.component';
+import { ObservableModule } from "./observable/observable.module";
+import { samService } from './observable/sam.service';
+import { InterceptorModule } from './interceptor/interceptor.module';
+import { ModifyInterceptor } from './modify.interceptor';
+import { LifeCycleHookModule } from './life-cycle-hook/life-cycle-hook.module';
+import { PipesModule } from './pipes/pipes.module';
 
 
 @NgModule({
@@ -27,7 +33,12 @@ import { Subscriber2Component } from './subscriber2/subscriber2.component';
         SubscriberComponent,
         Subscriber2Component
     ],
-    providers: [MobileService],
+    providers: [MobileService, samService, 
+    {
+        provide:HTTP_INTERCEPTORS,
+        useClass:ModifyInterceptor,
+        multi:true
+    }],
     bootstrap: [AppComponent],
     imports: [
         CommonModule,
@@ -38,7 +49,8 @@ import { Subscriber2Component } from './subscriber2/subscriber2.component';
         SideBarModule,
         ContentProjectionModule,
         DynamicComponentModule,
-        HttpClientModule
-        ]
+        HttpClientModule,
+        ObservableModule,InterceptorModule,LifeCycleHookModule,PipesModule
+    ]
 })
 export class AppModule { }
