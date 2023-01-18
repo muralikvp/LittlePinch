@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PipeComponent } from './pipe/pipe.component';
 import { UpperPipe } from './pipes/upper.pipe';
 import { AsyncExComponent } from './async-ex/async-ex.component';
+import { LowerPipe } from './lower.pipe';
 
 
 
@@ -11,6 +12,7 @@ import { AsyncExComponent } from './async-ex/async-ex.component';
     PipeComponent,
     UpperPipe,
     AsyncExComponent,
+    LowerPipe,
   ],
   imports: [
     CommonModule

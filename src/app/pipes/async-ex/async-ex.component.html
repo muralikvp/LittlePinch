@@ -1,4 +1,4 @@
 <p>async-ex works!</p>
 <ul>
-    <li *ngFor="let todo of listOfToDos$ | async">{{todo.name}}</li>
+    <li *ngFor="let todo of listOfToDos$ | async"><b>Name:</b> {{todo.name}} <b>User Name:</b> {{todo.username}}</li>
 </ul>

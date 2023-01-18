@@ -22,6 +22,10 @@ import { InterceptorModule } from './interceptor/interceptor.module';
 import { ModifyInterceptor } from './modify.interceptor';
 import { LifeCycleHookModule } from './life-cycle-hook/life-cycle-hook.module';
 import { PipesModule } from './pipes/pipes.module';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routing';
+import { DynamicModule } from './dynamic/dynamic.module';
+import { HeaderInterceptor } from './header.interceptor';
 
 
 @NgModule({
@@ -36,7 +40,7 @@ import { PipesModule } from './pipes/pipes.module';
     providers: [MobileService, samService, 
     {
         provide:HTTP_INTERCEPTORS,
-        useClass:ModifyInterceptor,
+        useClass:HeaderInterceptor,
         multi:true
     }],
     bootstrap: [AppComponent],
@@ -50,7 +54,9 @@ import { PipesModule } from './pipes/pipes.module';
         ContentProjectionModule,
         DynamicComponentModule,
         HttpClientModule,
-        ObservableModule,InterceptorModule,LifeCycleHookModule,PipesModule
+        ObservableModule,InterceptorModule,LifeCycleHookModule,PipesModule,
+        DynamicModule,
+        RouterModule.forRoot(routes)
     ]
 })
 export class AppModule { }

@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, finalize, map } from 'rxjs/operators';
-
+//ng generate interceptor <interceptor Name>
 @Injectable()
 export class ModifyInterceptor implements HttpInterceptor {
 
