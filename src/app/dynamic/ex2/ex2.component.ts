@@ -1,4 +1,4 @@
-import { Component, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, ViewChild, ViewRef } from '@angular/core';
 import { Ex1Component, Ex3Component } from '../ex1/ex1.component';
 import { HostDirective } from '../host.directive';
 
@@ -11,11 +11,12 @@ import { HostDirective } from '../host.directive';
 export class Ex2Component {
   @ViewChild(HostDirective, { static: true }) childRef: HostDirective;
   components = [Ex1Component, Ex3Component];
-  constructor(public factoryRes: ComponentFactoryResolver) {
+  constructor() {
 
   }
   loadComponent(id) {
-    //console.log(this.childRef);//Getting the child reference 
+    console.log("Child Ref: "+this.childRef);//Getting the child reference
+    console.log("View Ref: "+this.childRef,ViewRef);//Getting the child reference 
     this.childRef.viewRef.clear(); // Clear the existing Child reference
 
     //Resolve the component and create as factory

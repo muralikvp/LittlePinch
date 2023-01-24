@@ -1,4 +1,10 @@
-<p>ex2 works!</p>
-<button (click)="loadComponent(0)">Hi</button>
-<button (click)="loadComponent(1)">Hello</button>
-<ng-template host></ng-template>
+<p>Dynamic Component Example</p>
+<button (click)="loadComponent(0)">First Component</button>
+<button (click)="loadComponent(1)">Second Component</button>
+<ng-template host>
+    
+</ng-template>
+<!-- Ng template will act as placeholder to load the components/HTML -->
+<!-- Attribute Directive will be used to mark the Ngtemplate identifier -->
+<!-- ng g d host 
+to create the Custom Directive -->

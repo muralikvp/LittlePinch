@@ -1,0 +1,17 @@
+import { Injectable } from '@angular/core';
+import { Logger } from '../dependency-injection/logger';
+
+//Comment root for testing the optional() method in component
+@Injectable({
+  providedIn: 'root'
+})
+export class LoggerService implements Logger{
+  prefix = "root: ";
+  constructor(){
+    console.log(this.prefix + "Constructor init");
+  }
+  log(message: string) {
+    console.log(this.prefix + message);
+  }
+
+}

@@ -8,11 +8,8 @@ import { Observable } from 'rxjs/internal/Observable';
 export class UserService {
   
   public specialName:string;
-
   constructor(private http: HttpClient) { }
-
-
   getUsers(): Observable<any> {
-    return this.http.get('https://jsonplaceholder.typicode.com/users');
+    return this.http.get('https://jsonplaceholder.typicode.com/posts');
   }
 }

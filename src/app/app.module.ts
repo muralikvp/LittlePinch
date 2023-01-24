@@ -26,6 +26,8 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routing';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { HeaderInterceptor } from './header.interceptor';
+import { RxjsModule } from './rxjs/rxjs.module';
+import { DependencyInjectionModule } from './dependency-injection/dependency-injection.module';
 
 
 @NgModule({
@@ -35,8 +37,7 @@ import { HeaderInterceptor } from './header.interceptor';
         BikeChildComponent,
         MobileDirective,
         SubscriberComponent,
-        Subscriber2Component
-    ],
+        Subscriber2Component    ],
     providers: [MobileService, samService, 
     {
         provide:HTTP_INTERCEPTORS,
@@ -55,7 +56,7 @@ import { HeaderInterceptor } from './header.interceptor';
         DynamicComponentModule,
         HttpClientModule,
         ObservableModule,InterceptorModule,LifeCycleHookModule,PipesModule,
-        DynamicModule,
+        DynamicModule,RxjsModule,DependencyInjectionModule,
         RouterModule.forRoot(routes)
     ]
 })

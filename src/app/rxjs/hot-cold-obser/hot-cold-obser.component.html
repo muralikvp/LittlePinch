@@ -1,0 +1,38 @@
+<p>hot-cold-obser works!</p>
+
+<ul>
+<li>Cold Observabled start to emit values only when we subscribe to them. 
+Hot ones emit always descpite we have subscribers or not
+</li>
+
+<li>cold observables are unicase, and hpst observables are multicase(share value between multiple subscribers)
+</li>
+
+    <li>For hot observables Data Source is created and activated outside of observable. 
+For cold ones Data Source will be Inside the observables
+    </li>
+
+</ul>
+<h1>Examples of hot observales</h1>
+<p>From Event fromEvent(),mouse Events,Click</p>
+<p>RXjs Subjects</p>
+<p>Some Operators like share(),shareReplay(),</p>
+
+<hr/>
+<div></div>
+
+<div>Count: {{(post$ | async)?.length}} </div>
+<ul> 
+    <li *ngFor="let post of post$ | async">{{ post.title }}</li>
+</ul> 
+
+
+<hr/>
+<div></div>
+<div>Count: {{(post1$ | async)?.length}} </div>
+<ul> 
+    <li *ngFor="let post1 of post1$ | async">{{ post1.title }}</li>
+</ul> 
+
+
+

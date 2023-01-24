@@ -1,0 +1,16 @@
+<p>rx-ex2 works!</p>
+<button (click) ="dispatchOrder()">Order durum</button>
+<hr />
+<button (click)="_flatbread.next('Flat Bread')">Add Flat Bread</button>
+<button (click)="_meat.next('meat')">Add Meat </button>
+<button (click)="_sauce.next('sauce')">Add Sauce</button>
+<button (click)="_tomato.next('tomato')">Add Tomato</button>
+<button (click)="_cabbage.next('cabbage')">Add Cabbage</button> 
+<ng-container *ngIf="delivery$ | async as product">
+    <section *ngIf="product?.product">
+        <h4>Enjoy</h4>
+        <!-- <img src="/src/assets/Angular_Publisher_Subscriber_2.png" alt="" width="400"> -->
+        <h5>Ingredients:</h5>
+        <h5>{{product | json}}</h5>
+    </section>
+</ng-container>   
