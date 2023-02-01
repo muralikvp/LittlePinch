@@ -10,7 +10,7 @@ export class ExperimentalLoggerService implements Logger {
   // constructor(@Inject(APP_CONFIG) private config: AppConfig) {
   //   console.log("Experimental Logger Service", config);
   // }
-  prefix = "Root";
+  prefix = " Experiment: ";
   log(message: string) {
     console.log(this.prefix + " Experimental :" + message);
   }

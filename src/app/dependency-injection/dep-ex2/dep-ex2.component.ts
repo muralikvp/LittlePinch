@@ -14,27 +14,29 @@ import { LegacyLogger } from '../logger.legacy';
     //return instance of Experimental Logger Service 
     // rather than Logger service instane
 
-   // useValue: LegacyLogger
+//    useValue: LegacyLogger
     //We will use useValue if type is not in class.
     //IN this case LegacyLogger is constant 
-    useFactory:(config:AppConfig)=>{
+    useFactory:(config:AppConfig) => {
       return config.experimentalEnabled
       ? new ExperimentalLoggerService():
        new LoggerService();
 
     },
-    deps:[APP_CONFIG]
+   deps:[APP_CONFIG]
 
   }]
 })
 export class DepEx2Component {
 
-   constructor(private logger: LoggerService,
-    private exp :ExperimentalLoggerService) {
+   constructor(private logger: LoggerService
+    // ,
+    // private exp :ExperimentalLoggerService
+    ) {
    
   }
   ngOnInit():void{
-    this.logger.prefix ="App component";
+//    this.logger.prefix ="Ex2: ";
     this.logger.log("Dep - Ex2 component init");
 
     //this.exp.log("Expe"); 

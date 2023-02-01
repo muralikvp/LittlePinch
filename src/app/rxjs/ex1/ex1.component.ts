@@ -19,9 +19,10 @@ export class Ex1Component_Rxjs {
       filter((water => water === "water"))) //Filter the Water 
       .subscribe((water) => console.log("Drink it", water));
 
+
     const waterPipe1$ = stream$.pipe(
-      map((water) => warmup(water))    //Heat the water 
-    ).subscribe((water) => console.log("Take Shower", water));
+      map((w) => warmup(w)))     //Heat the water
+      .subscribe((x) => console.log("Take Shower", x));
 
     const waterPipe2$ = stream$.pipe(
       filter((water => water === "water")), //Filter the Water 
@@ -38,12 +39,12 @@ export class Ex1Component_Rxjs {
       map((water) => warmup(water))    //Won't Execute 
     ).subscribe((water) => console.log("Take Shower", water));
 
-    const cityWaterPipe$ = of("Water").pipe(
-      filter((water => water === "water"))); //Has its own properties 
+    const cityWaterPipe$ = of("Solid").pipe(
+      filter((water => water === "Solid"))); //Has its own properties 
      
       const waterPipe5$ = stream$.pipe(
         switchMap(() =>cityWaterPipe$),
-        filter((water => water === "water")),
+        filter((water => water === "Solid")),
         map((water) => warmup(water))    
       ).subscribe((water) => console.log("Take Shower", water));
 
@@ -75,6 +76,6 @@ export class Ex1Component_Rxjs {
   }
 }
 function warmup(water: string): any {
-  return water;
+  return "Heat " + water ;
 }
 

@@ -18,61 +18,61 @@ import { ObservableExComponent } from 'src/app/observable/observable-ex/observab
   styleUrls: ['./hot-cold-obser.component.css']
 })
 export class HotColdObserComponent implements OnInit {
- 
+
   post$!: Observable<any[]>;
 
   post1$!: Observable<any[]>;
 
 
-  constructor(private httpClient:HttpClient){
+  constructor(private httpClient: HttpClient) {
 
   }
   ngOnInit(): void {
 
     this.post$ = this.httpClient.get<any>
-    (`https://jsonplaceholder.typicode.com/posts`);
-    
+      (`https://jsonplaceholder.typicode.com/posts`);
+
     // this.post1$ = this.httpClient.get<any>
     // (`https://jsonplaceholder.typicode.com/posts`).pipe(shareReplay());
 
-    const obs$ = of(null).pipe(map (()=> Math.random())); 
-    console.log("First Observable");
-    obs$.subscribe(console.log);
-    obs$.subscribe({
-      next:value => console.log(value)
-    });
-    obs$.subscribe(console.log);
-    obs$.subscribe(console.log);
+    // const obs$ = of(null).pipe(map (()=> Math.random())); 
+    // console.log("First Observable");
+    // obs$.subscribe(console.log);
+    // obs$.subscribe({
+    //   next:v => console.log(v)
+    // });
+    // obs$.subscribe(console.log);
+    // obs$.subscribe(console.log);
 
     const obs1$ = fromTimeStamp();
     console.log("Second Observable");
     obs1$.subscribe(console.log);
     obs1$.subscribe({
-      next:value => console.log(value)
+      next: value => console.log(value)
     });
     console.log("Before Timer");
 
     setTimeout(() => {
       obs1$.subscribe(console.log);
-      console.log("After Timer");            
+      console.log("After Timer");
     }, 2000);
 
   }
 }
 
-const fromTimeStamp =(): Observable<number> => {
-  
+const fromTimeStamp = (): Observable<number> => {
+
   const timeStamp = Date.now();
   // This above line should be outside of Return statement.Fot Hot Observables 
   // If we placed outside then data will be cached and used multiple times.
 
   return new Observable((subscriber) => {
     subscriber.next(timeStamp);
-  } );
+  });
 
-  // Cold Observable
+  // //Cold Observable
   // return new Observable((subscriber) => {
-    // const timeStamp = Date.now();
+  //   const timeStamp = Date.now();
   //   subscriber.next(timeStamp);
   // } );
 } 
