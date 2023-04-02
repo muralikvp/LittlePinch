@@ -7,10 +7,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  //Available on ngAfterViewInit
-  // @ViewChild('tmplRef') vwChild: ElementRef = {} as ElementRef;
+  txtVal:string = "Vairam";
 
-  @ViewChild('tmplRef', { static: true }) vwChild: ElementRef = {} as ElementRef;
+    //Available on ngAfterViewInit
+   @ViewChild('tmplRef', { static: true }) h: ElementRef = {} as ElementRef;
 
   count = 5;
   ShowSub = false;
@@ -19,21 +19,23 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.el.nativeElement.classList.add('my-wrapper-class');
-    console.log(this.el.nativeElement);
-    console.log("Inside Ng on init " + this.vwChild.nativeElement);
+    console.log("Parent Construtor" + this.el.nativeElement);
+     console.log("Parent Inside Ng on init " + this.h.nativeElement);
   }
 
   ngAfterViewInit(): void {
     //  @ViewChild('tmplRef') vwChild: ElementRef = {} as ElementRef;
     // in this case Element will be available after View init
-    console.log("ng After View Init " + this.vwChild.nativeElement);
+     console.log("ng After View Init " + this.h.nativeElement);
   }
 
   getInput(i: HTMLInputElement) {
     console.log(i);
-    i.classList.add('myinput');
     i.value = "Hope Tutors";
+  }
 
+  getNormalInput() {
+    this.txtVal = "Arun";
   }
 
   ToggleShowSub() {

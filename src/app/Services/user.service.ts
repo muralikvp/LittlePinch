@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class UserService {
-  
+
   public specialName:string;
   constructor(private http: HttpClient) { }
   getUsers(): Observable<any> {

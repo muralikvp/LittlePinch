@@ -1,10 +1,17 @@
 <p>home works!</p>
 
-<!-- <app-sub-home *ngIf="ShowSub" [count]="count"></app-sub-home> -->
 <input type="text" #tmplRef />
 <button (click)="getInput(tmplRef)">Click Me</button>
-<app-sub-home  [count]="count"></app-sub-home>
 
-<button (click)="ToggleShowSub()" >Toggle</button>
+<hr>
+<h1>Normal Type</h1>
+<br/>
+<input type="text" value="{{txtVal}}" />
+<button (click)="getNormalInput()">Click Me</button>
 
-<button (click)="incrementCount()" >Increment Count</button>
+<button (click)="incrementCount()" >Increment Count</button>{{count}}
+<button (click)="ToggleShowSub()">Toggle</button>
+<hr>mail
+<app-sub-home *ngIf="ShowSub" [attr1]="count"></app-sub-home>
+
+

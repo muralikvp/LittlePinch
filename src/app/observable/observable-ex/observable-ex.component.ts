@@ -8,13 +8,11 @@ import { samService } from '../sam.service';
 @Component({
   selector: 'app-observable-ex',
   templateUrl: './observable-ex.component.html',
-  styleUrls: ['./observable-ex.component.css']
+  styleUrls: ['./observable-ex.component.css'],
 })
 export class ObservableExComponent {
-
   fromSub = null;
   constructor(private samservice: samService) {
-
     //  https://stackoverflow.com/questions/47537934/what-is-the-difference-between-observable-and-a-subject-in-rxjs
     //     Observables
 
@@ -42,74 +40,123 @@ export class ObservableExComponent {
 
     // multicast, can cast values to multiple subscribers and can act as both subscribers and emmitter
 
-    //   //Normal Observable 
-    //   // const check$ = new CustObservable(s => {
-    //   //   s.next("112");
-    //   //   s.next("212");
-    //   // });
+    // Custom Observable
 
-    //   // check$.subscribe(
-    //   //   x => {
-    //   //     console.log("lst", x);
-    //   //   }
-    //   // );
+        // //  Normal Observable
+        // //Obervable Method function
+        // const test$ = new Observable((s) => {
+        //   console.log('test');
+        //   setTimeout(() => s.next('11'), 5000);
+        //   s.next('Murali');
+        //   s.next('Vairamani');
+        //   //  s.error("Error Occurred from Observable");
+        //   s.next('Hope Tutors');
+        //   //  s.complete();
+        //   s.next('Sheik');
+        //   // setTimeout(() => s.next("44"), 1000);
+        // });
 
-    //   // check$.subscribe(
-    //   //   x => {
-    //   //     console.log("2nd", x);
-    //   //   }
-    //   // );
-    //  Normal Observable
-    // const test$ = new Observable(s => {
-    //   console.log("test");
-    //   setTimeout(() => s.next("11"), 5000);
-    //   s.next("Murali");
-    //   s.next("Krishna");
-    //    //s.error("Error Occurred from Observable");
-    //   s.next("Hope Tutors");
-    // //  s.complete();
-    //   s.next("Sheik");
-    //  // setTimeout(() => s.next("44"), 1000);
-    // });
+        // //calling observaed
+        // test$.subscribe({
+        //   next: (v) => {
+        //     if (v == 'Murali') {
+        //       console.log('Trainer', v);
+        //     } else if (v == 'Vairamani') {
+        //       console.log('Student');
+        //     } else {
+        //       console.log(v);
+        //     }
+        //   },
+        //   error: (e) => console.error(e),
+        //   complete: () => console.info('complete'),
+        // });
+        // console.log('Arun');
 
-    // test$.subscribe(
-    //   x => {
-    //     console.log("lst", x);
-    //   },
-    //   error => { console.log("error received:", error) },
-    //   () => { console.log("Completed") }
-    // );
+        // test$.subscribe(
+        //     x => {
+        //       console.log("2nd", x);
+        //     },
+        //     error => { console.log("error received 1:", error) },
+        //     () => { console.log("Completed1") }
+        //   );
 
-    //   test$.subscribe(
-    //     x => {
-    //       console.log("2nd", x);
-    //     },
-    //     error => { console.log("error received 1:", error) },
-    //     () => { console.log("Completed1") }
-    //   );
+        // test$.subscribe(
+        //   x => {
+        //     console.log("3rd", x);
+        //   },
+        //   error => { console.log("error received:", error) },
+        //   () => { console.log("Completed") }
+        // );
 
-    // test$.subscribe(
-    //   x => {
-    //     console.log("3rd", x);
-    //   },
-    //   error => { console.log("error received:", error) },
-    //   () => { console.log("Completed") }
-    // );
+
+    //Observables problem statement
+    // each subscription receives the different values as observables developed as unicast by design.
+
+        const obs = new Observable((s) => {
+          s.next(Math.random());
+        });
+
+       obs.subscribe(res=>{
+         console.log('subscription a :', res); //subscription a :0.2859800202682865
+       });
+
+       obs.subscribe(res=>{
+         console.log('subscription b :', res); //subscription b :0.694302021731573
+       });
+
+
+       //Subjects is similar to event-emitter and it does not invoke for each subscription
+       //Create an Service and place below line of code
+        let obs$ = new Subject();
+
+        //Call the same component in same page
+        //Component 1
+        obs$.subscribe(res=>{
+          console.log('subscription a :', res); // subscription a : 0.91767565496093
+        });
+
+        //Component 2
+        obs$.subscribe(res=>{
+          console.log('subscription b :', res);// subscription b : 0.91767565496093
+        });
+
+        //place below line of code in same Service
+        //Call below method on button click
+        obs$.next(Math.random());
+
+
+  // //  How to create our own Observable class and method
+  //   const check$ = new CustObservable(s => {
+  //     s.next("112");
+  //     s.next("212");
+  //   });
+
+  //   check$.subscribe(
+  //     x => {
+  //       console.log("lst", x);
+  //     }
+  //   );
+
+  //   check$.subscribe(
+  //     x => {
+  //       console.log("2nd", x);
+  //     }
+  //   );
 
     //Subjects
     // var ob$: Observable<any> = of(1, 2, 3);
     // ob$.subscribe(x => console.log('From App Obs', x));
 
-    var sub: Subject<any> = new Subject();
-    sub.subscribe(x => console.log('From the app Sub 1', x));
-    sub.next('Krishnan');
+    // var sub: Subject<any> = new Subject();
+    // sub.subscribe(x => console.log('From the app Sub 1', x));
+    // sub.next('Krishnan');
 
-    //Component communication between Subject-ex and observable-ex
-    this.samservice.sub.subscribe(x => {
-      console.log("From Observable-Ex Component", x);
-      this.fromSub = x;
-    }
-    )
+    // //Component communication between Subject-ex and observable-ex
+    // this.samservice.sub.subscribe(x => {
+    //   console.log("From Observable-Ex Component", x);
+    //   this.fromSub = x;
+    // }
+    // )
 
     // this.samservice.ob$.subscribe(x => {
     //   console.log("From Observable-Ex Component-1", x);
@@ -123,39 +170,31 @@ export class ObservableExComponent {
     // }
     // )
 
+    // let obs = Observable.create((observer) => {
+    //   observer.next(Math.random());
+    // });
 
+    // obs.subscribe((res) => {
+    //   console.log('subscription a :', res); //subscription a :0.2859800202682865
+    // });
 
-    let obs = Observable.create(observer => {
-      observer.next(Math.random());
-    })
+    // obs.subscribe((res) => {
+    //   console.log('subscription b :', res); //subscription b :0.694302021731573
+    // });
 
-    obs.subscribe(res => {
-      console.log('subscription a :', res); //subscription a :0.2859800202682865
-    });
+    // let obs1 = new Subject();
 
-    obs.subscribe(res => {
-      console.log('subscription b :', res); //subscription b :0.694302021731573
-    });
+    // obs1.subscribe((res) => {
+    //   console.log('subscription a1 :', res); // subscription a : 0.91767565496093
+    // });
 
+    // obs1.subscribe((res) => {
+    //   console.log('subscription b1 :', res); // subscription b : 0.91767565496093
+    // });
 
-    let obs1 = new Subject();
-
-    obs1.subscribe(res => {
-      console.log('subscription a1 :', res); // subscription a : 0.91767565496093
-    });
-
-    obs1.subscribe(res => {
-      console.log('subscription b1 :', res);// subscription b : 0.91767565496093
-    });
-
-    obs1.next(Math.random());
-
+    // obs1.next(Math.random());
   }
-
-
 }
-
-
 
 // function fromEvent(target, eventName) {
 //   return new observable(o => {

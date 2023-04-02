@@ -4,10 +4,9 @@ export class CustObservable {
 
     constructor(m) {
         setTimeout(() => {
-             m(this); 
+             m(this);
             },
          1000)
-
     }
     subscribe(method) {
         this.subscribers.push(method);
