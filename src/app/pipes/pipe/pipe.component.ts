@@ -14,7 +14,7 @@ obj ={name:'Murali' };
 dateObj =Date.now();
 
 uppercase( s:string ){
-return s.toUpperCase();
+  return  s.toUpperCase() + "Training";
 }
 
 }

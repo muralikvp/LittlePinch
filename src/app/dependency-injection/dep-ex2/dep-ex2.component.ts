@@ -11,12 +11,12 @@ import { LegacyLogger } from '../logger.legacy';
   providers:[{
     provide:LoggerService,
     //useClass: ExperimentalLoggerService
-    //return instance of Experimental Logger Service 
+    //return instance of Experimental Logger Service
     // rather than Logger service instane
 
 //    useValue: LegacyLogger
     //We will use useValue if type is not in class.
-    //IN this case LegacyLogger is constant 
+    //IN this case LegacyLogger is constant
     useFactory:(config:AppConfig) => {
       return config.experimentalEnabled
       ? new ExperimentalLoggerService():
@@ -33,13 +33,13 @@ export class DepEx2Component {
     // ,
     // private exp :ExperimentalLoggerService
     ) {
-   
+
   }
   ngOnInit():void{
 //    this.logger.prefix ="Ex2: ";
     this.logger.log("Dep - Ex2 component init");
 
-    //this.exp.log("Expe"); 
+    //this.exp.log("Expe");
 
   }
 }

@@ -6,9 +6,9 @@ import { Logger } from '../dependency-injection/logger';
 // }
 //Comment root for testing the optional() method in component
 @Injectable(
-  {
-  providedIn: 'root'
-}
+//   {
+//   providedIn: 'root'
+// }
 )
 export class LoggerService implements Logger{
   prefix = " Root: ";
