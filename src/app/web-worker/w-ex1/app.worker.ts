@@ -22,6 +22,8 @@ const generatePrime = num => {
 };
 
 addEventListener('message', ({ data }) => {
-  const response = {prime:generatePrime(data.num)};
+
+  const response = {prime:generatePrime(data)};
+
   postMessage(response);
 });

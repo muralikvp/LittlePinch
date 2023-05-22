@@ -10,9 +10,6 @@ import { BikeChildComponent } from './bike-child/bike-child.component';
 import { CommonModule } from '@angular/common';
 import { SideBarModule } from "./side-bar/side-bar.module";
 import { ContentProjectionModule } from "./content-projection/content-projection.module";
-import { MobileDirective } from './dynamic-component/Mobile.directive';
-import { DynamicComponentModule } from './dynamic-component/dynamic-component.module';
-import { MobileService } from './dynamic-component/mobile.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SubscriberComponent } from './subscriber/subscriber.component';
 import { Subscriber2Component } from './subscriber2/subscriber2.component';
@@ -28,17 +25,17 @@ import { DynamicModule } from './dynamic/dynamic.module';
 import { HeaderInterceptor } from './header.interceptor';
 import { RxjsModule } from './rxjs/rxjs.module';
 import { DependencyInjectionModule } from './dependency-injection/dependency-injection.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
     declarations: [
-        AppComponent,
         BikeListComponent,
         BikeChildComponent,
-        MobileDirective,
         SubscriberComponent,
-        Subscriber2Component    ],
-    providers: [MobileService, samService, 
+        Subscriber2Component,
+        AppComponent    ],
+    providers: [samService,
     {
         provide:HTTP_INTERCEPTORS,
         useClass:HeaderInterceptor,
@@ -53,10 +50,10 @@ import { DependencyInjectionModule } from './dependency-injection/dependency-inj
         SharedModule,
         SideBarModule,
         ContentProjectionModule,
-        DynamicComponentModule,
         HttpClientModule,
         ObservableModule,InterceptorModule,LifeCycleHookModule,PipesModule,
         DynamicModule,RxjsModule,DependencyInjectionModule,
+        FormsModule,
         RouterModule.forRoot(routes)
     ]
 })

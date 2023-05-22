@@ -31,11 +31,11 @@ export const routes: Routes = [
     {path:'WebWorker',component:WEx1Component},
     {path:'Rxjs',component:Ex1Component_Rxjs},
     {path:'HotColdObservables',component:HotColdObserComponent},
-    {path:'DependencyInjection',component:DepEx1Component},    
-    {path:'DependencyInjection2',component:DepEx2Component},    
+    {path:'DependencyInjection',component:DepEx1Component},
+    {path:'DependencyInjection2',component:DepEx2Component},
 
-    
+
+
     { path: '', redirectTo: 'lifecyleHook', pathMatch: 'full' },
     { path: '**', redirectTo: 'PageNotFound' },
   ];
-  

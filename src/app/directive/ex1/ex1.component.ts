@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./ex1.component.css']
 })
 export class Ex1Component {
+  twowayData!:any;
 
 }

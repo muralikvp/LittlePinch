@@ -45,13 +45,13 @@ export class ObservableExComponent {
         // //  Normal Observable
         // //Obervable Method function
         // const test$ = new Observable((s) => {
-        //   console.log('test');
+        //   console.log('Console Start');
         //   setTimeout(() => s.next('11'), 5000);
         //   s.next('Murali');
         //   s.next('Vairamani');
-        //   //  s.error("Error Occurred from Observable");
+        //   s.error("Occurred from Observable");
         //   s.next('Hope Tutors');
-        //   //  s.complete();
+        //   s.complete();
         //   s.next('Sheik');
         //   // setTimeout(() => s.next("44"), 1000);
         // });
@@ -67,10 +67,10 @@ export class ObservableExComponent {
         //       console.log(v);
         //     }
         //   },
-        //   error: (e) => console.error(e),
+        //   error: (e) => console.error("Error:"+ e),
         //   complete: () => console.info('complete'),
         // });
-        // console.log('Arun');
+        // console.log('Console End');
 
         // test$.subscribe(
         //     x => {
@@ -92,18 +92,17 @@ export class ObservableExComponent {
     //Observables problem statement
     // each subscription receives the different values as observables developed as unicast by design.
 
-        const obs = new Observable((s) => {
-          s.next(Math.random());
-        });
+      //   const obs = new Observable((s) => {
+      //     s.next(Math.random());
+      //   });
 
-       obs.subscribe(res=>{
-         console.log('subscription a :', res); //subscription a :0.2859800202682865
-       });
+      //  obs.subscribe(res=>{
+      //    console.log('subscription a :', res); //subscription a :0.2859800202682865
+      //  });
 
-       obs.subscribe(res=>{
-         console.log('subscription b :', res); //subscription b :0.694302021731573
-       });
-
+      //  obs.subscribe(res=>{
+      //    console.log('subscription b :', res); //subscription b :0.694302021731573
+      //  });
 
        //Subjects is similar to event-emitter and it does not invoke for each subscription
        //Create an Service and place below line of code
@@ -123,6 +122,7 @@ export class ObservableExComponent {
         //place below line of code in same Service
         //Call below method on button click
         obs$.next(Math.random());
+
 
 
   // //  How to create our own Observable class and method
